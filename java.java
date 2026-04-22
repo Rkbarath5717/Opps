@@ -4,13 +4,15 @@ class Student{
    String department;
    int age;
    int rank;
+   int star;
 
-   Student(int id,String name,String department,int age,int rank){
+   Student(int id,String name,String department,int age,int rank,int star){
       this.id=id;
       this.name=name;
       this.department=department;
       this.age=age;
       this.rank=rank;
+      this.star=star;
    }
    void show(){
       System.out.println(id);
@@ -18,6 +20,7 @@ class Student{
       System.out.println(department);
       System.out.println(age);
       System.out.println(rank);
+      System.out.println(star);
    }
 
 }
