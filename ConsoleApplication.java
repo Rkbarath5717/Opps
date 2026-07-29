@@ -1,10 +1,11 @@
-public class Students{
+import java.util.*;
+class Students{
     private int id;
     private String name;
     private String department;
     private double mark;
 
-    Student(int id,String name,String department,double mark){
+    Students(int id,String name,String department,double mark){
         this.id=id;
         this.name=name;
         this.department=department;
@@ -42,13 +43,12 @@ public class Students{
                 "Mark :"+mark;
     }
 }
-import java.util.ArrayList;
-public class StudentService{
+class StudentService{
     private ArrayList<Students> students=new ArrayList<>();
 
     //Create
     public void addStudent(Students student){
-        student.add(student);
+        students.add(student);
         System.out.println("Student is added successfully ! ");
     }
 
@@ -100,7 +100,44 @@ public class StudentService{
 
 public class ConsoleApplication {
     public static void main(String[] args) {
-        // Your Code goes here!
+        Scanner scn = new Scanner(System.in);
+        StudentService service = new StudentService();
+        while(true){
+            System.out.println("Student Management System");
+            System.out.println("1.Add Student");
+            System.out.println("2.View All");
+            System.out.println("3.Search Student");
+            System.out.println("4.Update Student");
+            System.out.println("5.Delete Student");
+            System.out.println("6.Exit");
+            System.out.println("Enter Your choice: ");
+            int choice=scn.nextInt();
+            switch(choice){
+                case 1:
+                    int id=scn.nextInt();
+                    scn.nextLine();
+                    String name=scn.nextLine();
+                    String Department=scn.nextLine();
+                    double mark=scn.nextDouble();
+                    Students student=new Students(id,name,Department,mark);
+                    service.addStudent(student);
+                    break;
 
+                case 2:
+                    service.viewStudents();
+                    break;
+
+                case 3:
+                    int searchId=scn.nextInt();
+                    Students found = service.findStudentById(searchId);
+                    if(found != null){
+                        System.out.print(found);
+                    }
+                    else{
+                        System.out.print("Student Not found");
+                    }
+                    break;
+            }
+        }
     }
 }
